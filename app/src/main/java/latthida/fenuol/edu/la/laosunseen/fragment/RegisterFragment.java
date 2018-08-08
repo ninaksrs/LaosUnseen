@@ -15,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -59,11 +60,28 @@ public class RegisterFragment extends Fragment{
 
     private void uploadProcess() {
 
+        EditText nameEditText = getView().findViewById(R.id.edtName);
+        EditText emailEditText = getView().findViewById(R.id.edtEmail);
+        EditText passwordEditText = getView().findViewById(R.id.edtPassword);
+
+//                    Get Value From EditText
+        String nameString = nameEditText.getText().toString().trim();
+        String emailString = emailEditText.getText().toString().trim();
+        String passwordString = passwordEditText.getText().toString().trim();
+
 //        Check Choose Photo
         if (aBoolean) {
 //            None Choose Photo
             MyAlert myAlert = new MyAlert(getActivity());
             myAlert.normalDialog("Non Choose Image", "Plase Choose Photo");
+
+        } else if (nameString.isEmpty() || emailString.isEmpty() || passwordString.isEmpty()) {
+//            Have Space
+            MyAlert myAlert = new MyAlert(getActivity());
+            myAlert.normalDialog("Have Space", "Please Fill All Every Blank");
+        } else {
+//            No Space
+
         }
     }
 
