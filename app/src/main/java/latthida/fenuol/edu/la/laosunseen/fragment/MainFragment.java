@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import javax.sql.RowSet;
 
 import latthida.fenuol.edu.la.laosunseen.R;
@@ -19,11 +21,33 @@ public class MainFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-//        Register Controler
+//        Check Status
+        checkStatus();
+
+
+//        Register Controller
+        registerController();
+
+
+    }   // Method Main
+
+    private void checkStatus() {
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        if (firebaseAuth.getCurrentUser() != null) {
+            getActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.contentMainFragment, new ServiceFragment())
+                    .commit();
+        }
+    }
+
+    private void registerController() {
         TextView textView = getView().findViewById(R.id.txtRegister);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 //                Register Fragment
                 getActivity()
                         .getSupportFragmentManager()
@@ -33,9 +57,7 @@ public class MainFragment extends Fragment {
                         .commit();
             }
         });
-
-
-    }   // Method Main
+    }
 
     @Nullable
     @Override

@@ -28,4 +28,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.android.support:recyclerview-v7:27.0.1'
     implementation 'com.android.support:design:27.0.1'
+    implementation 'com.google.firebase:firebase-core:16.0.0'
+    // change compile to implementation
+    implementation 'com.google.firebase:firebase-storage:16.0.1'
+    implementation 'com.google.firebase:firebase-auth:16.0.2'
 }
+apply plugin: 'com.google.gms.google-services'

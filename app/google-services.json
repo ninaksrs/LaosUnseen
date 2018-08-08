@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "928141323183",
+    "firebase_url": "https://laosunseen-64e5b.firebaseio.com",
+    "project_id": "laosunseen-64e5b",
+    "storage_bucket": "laosunseen-64e5b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:928141323183:android:c84f0f47f8439557",
+        "android_client_info": {
+          "package_name": "latthida.fenuol.edu.la.laosunseen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "928141323183-uaj5osjj99co9iodef0ub1sa9ica53aa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "latthida.fenuol.edu.la.laosunseen",
+            "certificate_hash": "ee01b9459fd43a9cb0b6c49189ccbb5033dcc719"
+          }
+        },
+        {
+          "client_id": "928141323183-02dg7t2mhqpd1979hhaqmk3moscrnm39.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCa7EGulwsU_P-r1vd81290eps2va6eNkU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "928141323183-02dg7t2mhqpd1979hhaqmk3moscrnm39.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
