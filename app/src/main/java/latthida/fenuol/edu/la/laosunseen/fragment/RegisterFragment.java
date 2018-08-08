@@ -20,12 +20,14 @@ import android.widget.Toast;
 
 import latthida.fenuol.edu.la.laosunseen.MainActivity;
 import latthida.fenuol.edu.la.laosunseen.R;
+import latthida.fenuol.edu.la.laosunseen.utility.MyAlert;
 
 public class RegisterFragment extends Fragment{
 
     //    Explicit
     private Uri uri;
     private ImageView imageView;
+    private boolean aBoolean = true;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -49,9 +51,20 @@ public class RegisterFragment extends Fragment{
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.itemUpload) {
+            uploadProcess();
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void uploadProcess() {
+
+//        Check Choose Photo
+        if (aBoolean) {
+//            None Choose Photo
+            MyAlert myAlert = new MyAlert(getActivity());
+            myAlert.normalDialog("Non Choose Image", "Plase Choose Photo");
+        }
     }
 
     @Override
@@ -61,6 +74,8 @@ public class RegisterFragment extends Fragment{
         if (resultCode == getActivity().RESULT_OK) {
 
             uri = data.getData();
+            aBoolean = false;
+
             try {
 
                 Bitmap bitmap = BitmapFactory.decodeStream(getActivity().getContentResolver().openInputStream(uri));
