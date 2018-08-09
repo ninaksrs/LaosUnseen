@@ -31,6 +31,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.net.Authenticator;
+import java.util.ArrayList;
 
 import latthida.fenuol.edu.la.laosunseen.MainActivity;
 import latthida.fenuol.edu.la.laosunseen.R;
@@ -134,6 +135,7 @@ public class RegisterFragment extends Fragment {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 Toast.makeText(getActivity(), "Success Upload Photo", Toast.LENGTH_SHORT).show();
                 findPathUrlPhoto();
+                createPost();
 
 
             }
@@ -141,15 +143,47 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(getActivity(), "Can not Upload Photo", Toast.LENGTH_SHORT).show();
+                Log.wtf("8AugV1", "e ==> " + e.toString());
             }
         });
 
 
     }   // uploadPhoto
 
-    private void findPathUrlPhoto() {
-
+    private void createPost() {
+        ArrayList<String> stringArrayList = new ArrayList<>();
+        stringArrayList.add("Hello");
+        myPostString = stringArrayList.toString();
+        Log.wtf("9AugV1", "myPost ==>" + myPostString);
     }
+
+    private void findPathUrlPhoto() {
+        try {
+            FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
+            StorageReference storageReference = firebaseStorage.getReference();
+            final String[] urlStrings = new String[1];
+
+            storageReference.child("Avatar").child(nameString)
+                    .getDownloadUrl()
+                    .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            urlStrings[0] = uri.toString();
+                            pathURLString = urlStrings[0];
+                            Log.wtf("9AugV1", "urlStrings[0] ==> " + urlStrings[0]);
+                            Log.wtf("9AugV1", "pathURL ==>" + pathURLString);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.wtf("9AugV1", "Error ==>" + e.toString());
+                }
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }   //findPath
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
